@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+    <title>جارفس AI بيتا - الذكاء الاصطناعي الخارق</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
+        
+        :root {
+            /* Enhanced Color Palette */
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --warning-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            
+            --primary-blue: #667eea;
+            --secondary-blue: #764ba2;
+            --accent-orange: #f5576c;
+            --success-green: #43e97b;
+            --warning-yellow: #fee140;
+            
+            --dark-bg: #1a1a2e;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-light: rgba(255, 255, 255, 0.95);
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --border-glow: rgba(102, 126, 234, 0.6);
+            
+            /* Animation Variables */
+            --animation-speed: 0.3s;
+            --bounce-timing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(245, 87, 108, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(67, 233, 123, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0f0f23 0%, #16213e 50%, #1a1a2e 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Enhanced Header with Premium Design */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all var(--animation-speed) ease;
+            animation: slideDown 0.8s ease-out;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        header.scrolled {
+            padding: 0.7rem 0;
+            background: rgba(26, 26, 46, 0.98);
+            box-shadow: 0 8px 40px rgba(102, 126, 234, 0.2);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        /* Enhanced Logo Design */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            animation: logoGlow 3s ease-in-out infinite alternate;
+            flex-shrink: 0;
+        }
+        
+        @keyframes logoGlow {
+            from {
+                filter: drop-shadow(0 0 15px rgba(102, 126, 234, 0.4));
+            }
+            to {
+                filter: drop-shadow(0 0 25px rgba(102, 126, 234, 0.8));
+            }
+        }
+        
+        .logo-icon {
+            width: clamp(40px, 6vw, 60px);
+            height: clamp(40px, 6vw, 60px);
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            animation: robotPulse 4s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(79, 172, 254, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: logoShine 3s ease-in-out infinite;
+        }
+        
+        @keyframes logoShine {
+            0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        @keyframes robotPulse {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                box-shadow: 0 0 20px rgba(79, 172, 254, 0.4);
+            }
+            25% { 
+                transform: scale(1.1) rotate(-5deg);
+                box-shadow: 0 0 30px rgba(79, 172, 254, 0.6);
+            }
+            50% { 
+                transform: scale(1.05) rotate(0deg);
+                box-shadow: 0 0 25px rgba(79, 172, 254, 0.5);
+            }
+            75% { 
+                transform: scale(1.1) rotate(5deg);
+                box-shadow: 0 0 30px rgba(79, 172, 254, 0.6);
+            }
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .logo-main {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 900;
+            line-height: 1;
+        }
+        
+        .logo-sub {
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            font-weight: 600;
+            opacity: 0.8;
+            margin-top: -0.2rem;
+        }
+        
+        .owner-badge {
+            background: var(--warning-gradient);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 25px;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            font-weight: bold;
+            animation: badgeFloat 4s ease-in-out infinite;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(245, 87, 108, 0.4);
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .owner-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: badgeShine 2s ease-in-out infinite;
+        }
+        
+        @keyframes badgeShine {
+            0%, 100% { left: -100%; }
+            50% { left: 100%; }
+        }
+        
+        @keyframes badgeFloat {
+            0%, 100% { 
+                transform: translateY(0px) scale(1);
+                box-shadow: 0 0 20px rgba(245, 87, 108, 0.4);
+            }
+            50% { 
+                transform: translateY(-5px) scale(1.05);
+                box-shadow: 0 5px 25px rgba(245, 87, 108, 0.6);
+            }
+        }
+        
+        /* Enhanced Navigation Links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all var(--animation-speed) var(--bounce-timing);
+            position: relative;
+            font-weight: 600;
+            overflow: hidden;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity var(--animation-speed) ease;
+            border-radius: 25px;
+        }
+        
+        .nav-links a:hover::before {
+            opacity: 1;
+        }
+        
+        .nav-links a:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(79, 172, 254, 0.3);
+            color: white;
+        }
+        
+        .nav-links a span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Enhanced Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            transition: all var(--animation-speed) ease;
+        }
+        
+        .mobile-menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+        
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            margin: 3px 0;
+            transition: var(--animation-speed);
+            border-radius: 2px;
+        }
+        
+        /* Enhanced Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at center, rgba(102, 126, 234, 0.2) 0%, transparent 70%),
+                conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(245, 87, 108, 0.15) 60deg, transparent 120deg);
+            animation: heroRotate 25s linear infinite;
+        }
+        
+        @keyframes heroRotate {
+            from { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            to { transform: rotate(360deg) scale(1); }
+        }
+        
+        .hero-content {
+            z-index: 2;
+            position: relative;
+            animation: heroFadeIn 1.5s ease-out;
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+        
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titlePulse 4s ease-in-out infinite;
+            position: relative;
+            display: inline-block;
+        }
+        
+        @keyframes titlePulse {
+            0%, 100% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.5));
+            }
+            50% { 
+                transform: scale(1.03);
+                filter: drop-shadow(0 0 40px rgba(102, 126, 234, 0.8));
+            }
+        }
+        
+        .hero-content h1::after {
+            content: "R1 فائق";
+            position: absolute;
+            top: clamp(-30px, -5vw, -20px);
+            right: clamp(-100px, -15vw, -60px);
+            background: var(--secondary-gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: clamp(0.6rem, 2vw, 1rem);
+            font-weight: bold;
+            animation: badgeRotate 6s ease-in-out infinite;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 25px rgba(245, 87, 108, 0.5);
+            white-space: nowrap;
+        }
+        
+        @keyframes badgeRotate {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-10deg) scale(1.1); }
+            50% { transform: rotate(0deg) scale(1.05); }
+            75% { transform: rotate(10deg) scale(1.1); }
+        }
+        
+        .hero-content p {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            font-weight: 400;
+            line-height: 1.6;
+            animation: textSlideUp 1.5s ease-out 0.3s both;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @keyframes textSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: buttonsSlideUp 1.5s ease-out 0.6s both;
+        }
+        
+        @keyframes buttonsSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .cta-button {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--animation-speed) var(--bounce-timing);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+        
+        .cta-button.secondary {
+            background: var(--glass-bg);
+            border: 2px solid var(--border-glow);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(79, 172, 254, 0.5);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Enhanced Features Section */
+        .features {
+            padding: 8rem 0;
+            background: rgba(102, 126, 234, 0.08);
+            position: relative;
+        }
+        
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%234facfe" fill-opacity="0.08"><circle cx="30" cy="30" r="2"/></g></svg>');
+            opacity: 0.4;
+            animation: patternMove 20s linear infinite;
+        }
+        
+        @keyframes patternMove {
+            from { transform: translateX(0) translateY(0); }
+            to { transform: translateX(60px) translateY(60px); }
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 4rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            animation: sectionTitleSlide 1s ease-out;
+        }
+        
+        @keyframes sectionTitleSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .features h2::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+            animation: underlineGrow 1s ease-out 0.5s both;
+        }
+        
+        @keyframes underlineGrow {
+            from { width: 0; }
+            to { width: 100px; }
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .feature-card {
+            background: var(--glass-bg);
+            padding: 2.5rem;
+            border-radius: 25px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.5s var(--bounce-timing);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            animation: cardSlideIn 0.8s ease-out;
+        }
+        
+        @keyframes cardSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity var(--animation-speed) ease;
+        }
+        
+        .feature-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-20px) scale(1.03);
+            box-shadow: 0 40px 80px rgba(79, 172, 254, 0.4);
+            border-color: var(--primary-blue);
+        }
+        
+        .feature-icon {
+            font-size: clamp(3rem, 6vw, 4rem);
+            margin-bottom: 1.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: iconBounce 3s ease-in-out infinite;
+        }
+        
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            25% { transform: translateY(-8px) scale(1.1); }
+            50% { transform: translateY(-4px) scale(1.05); }
+            75% { transform: translateY(-12px) scale(1.15); }
+        }
+        
+        .feature-card h3 {
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+        
+        .feature-card p {
+            opacity: 0.85;
+            line-height: 1.8;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+        }
+        
+        /* Enhanced Chat Interface */
+        .chat-section {
+            padding: 8rem 0;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(245, 87, 108, 0.15) 0%, transparent 50%);
+            position: relative;
+        }
+        
+        .chat-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            border-radius: 30px;
+            padding: 3rem;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(25px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            animation: chatContainerSlide 1s ease-out;
+        }
+        
+        @keyframes chatContainerSlide {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .chat-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .chat-header h2 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+        
+        .chat-header p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        /* Download Button */
+        .download-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .download-btn {
+            background: var(--success-gradient);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--animation-speed) var(--bounce-timing);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 8px 20px rgba(67, 233, 123, 0.3);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(67, 233, 123, 0.5);
+        }
+        
+        .chat-messages {
+            height: clamp(300px, 50vh, 500px);
+            overflow-y: auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(15px);
+        }
+        
+        .chat-messages::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .chat-messages::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--accent-gradient);
+            border-radius: 5px;
+        }
+        
+        .message {
+            margin-bottom: 1.5rem;
+            padding: 1.2rem;
+            border-radius: 20px;
+            animation: messageSlideIn 0.6s ease-out;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 1.6;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        @keyframes messageSlideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+        
+        .user-message {
+            background: var(--accent-gradient);
+            margin-right: 15%;
+            text-align: right;
+            border-radius: 25px 25px 8px 25px;
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
+        }
+        
+        .ai-message {
+            background: var(--glass-bg);
+            margin-left: 15%;
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 25px 25px 25px 8px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.7;
+            flex-wrap: wrap;
+        }
+        
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .typing-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            animation: typingBounce 1.6s infinite ease-in-out;
+        }
+        
+        .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes typingBounce {
+            0%, 80%, 100% { 
+                transform: scale(0.8) translateY(0); 
+                opacity: 0.5; 
+            }
+            40% { 
+                transform: scale(1.2) translateY(-10px); 
+                opacity: 1; 
+            }
+        }
+        
+        .chat-input {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            min-width: 200px;
+            padding: 1.2rem 1.5rem;
+            border: 2px solid var(--glass-border);
+            border-radius: 30px;
+            background: var(--glass-bg);
+            color: var(--text-light);
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            transition: all var(--animation-speed) ease;
+            backdrop-filter: blur(15px);
+        }
+        
+        .chat-input input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 25px rgba(102, 126, 234, 0.4);
+            transform: scale(1.02);
+        }
+        
+        .chat-input input::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        .chat-input button {
+            padding: 1.2rem 2rem;
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            font-weight: 600;
+            transition: all var(--animation-speed) var(--bounce-timing);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
+            white-space: nowrap;
+        }
+        
+        .chat-input button:hover {
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 15px 35px rgba(79, 172, 254, 0.5);
+        }
+        
+        .voice-button {
+            padding: 1.2rem;
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            border-radius: 50%;
+            color: var(--primary-blue);
+            cursor: pointer;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            transition: all var(--animation-speed) var(--bounce-timing);
+            backdrop-filter: blur(15px);
+            flex-shrink: 0;
+        }
+        
+        .voice-button:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: scale(1.15) rotate(10deg);
+        }
+        
+        .voice-button.recording {
+            background: var(--accent-orange);
+            color: white;
+            animation: recordingPulse 1.2s infinite;
+        }
+        
+        @keyframes recordingPulse {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                box-shadow: 0 0 0 0 rgba(245, 87, 108, 0.7);
+            }
+            50% { 
+                transform: scale(1.15) rotate(5deg); 
+                box-shadow: 0 0 0 15px rgba(245, 87, 108, 0);
+            }
+        }
+        
+        /* Enhanced Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--primary-blue);
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            line-height: 2;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            transition: all var(--animation-speed) ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 5rem 0;
+            background: rgba(102, 126, 234, 0.1);
+            text-align: center;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 8rem 0;
+            background: rgba(102, 126, 234, 0.05);
+            position: relative;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 4rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            animation: sectionTitleSlide 1s ease-out;
+        }
+
+        .team-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+            animation: underlineGrow 1s ease-out 0.5s both;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--glass-bg);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            transition: all 0.5s var(--bounce-timing);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            animation: cardSlideIn 0.8s ease-out;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity var(--animation-speed) ease;
+        }
+
+        .team-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .team-card:hover {
+            transform: translateY(-20px) scale(1.03);
+            box-shadow: 0 40px 80px rgba(102, 126, 234, 0.4);
+            border-color: var(--primary-blue);
+        }
+
+        .team-avatar {
+            width: clamp(80px, 15vw, 120px);
+            height: clamp(80px, 15vw, 120px);
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: avatarFloat 4s ease-in-out infinite;
+        }
+
+        .avatar-placeholder {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: white;
+        }
+
+        @keyframes avatarFloat {
+            0%, 100% { 
+                transform: translateY(0px) scale(1);
+                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            }
+            50% { 
+                transform: translateY(-10px) scale(1.05);
+                box-shadow: 0 20px 40px rgba(102, 126, 234, 0.5);
+            }
+        }
+
+        .team-card h3 {
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .team-role {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .team-bio {
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            line-height: 1.6;
+            color: var(--text-secondary);
+            opacity: 0.8;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item {
+            padding: 2rem;
+            background: var(--glass-bg);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(15px);
+            transition: all var(--animation-speed) var(--bounce-timing);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        .stat-number {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            opacity: 0.8;
+        }
+        
+        /* Enhanced Particle System */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: particleFloat 20s linear infinite;
+        }
+        
+        .particle.blue {
+            background: var(--primary-blue);
+            box-shadow: 0 0 15px var(--primary-blue);
+        }
+        
+        .particle.orange {
+            background: var(--accent-orange);
+            box-shadow: 0 0 15px var(--accent-orange);
+        }
+        
+        .particle.purple {
+            background: var(--secondary-blue);
+            box-shadow: 0 0 15px var(--secondary-blue);
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) translateX(10px) rotate(45deg) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(10vh) translateX(90px) rotate(315deg) scale(1);
+            }
+            100% {
+                transform: translateY(-10px) translateX(100px) rotate(360deg) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* New Floating Elements Animation */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: floatAround 15s ease-in-out infinite;
+        }
+        
+        @keyframes floatAround {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.1;
+            }
+            25% {
+                transform: translate(100px, -50px) rotate(90deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(200px, 100px) rotate(180deg);
+                opacity: 0.2;
+            }
+            75% {
+                transform: translate(-50px, 150px) rotate(270deg);
+                opacity: 0.3;
+            }
+        }
+        
+        /* Responsive Design Improvements */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .features-grid, .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+                gap: 2rem;
+            }
+            
+            .chat-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .nav-links {
+                gap: 0.3rem;
+                padding: 0.3rem;
+            }
+            
+            .nav-links a {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 46, 0.98);
+                backdrop-filter: blur(25px);
+                border-top: 1px solid var(--glass-border);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 999;
+                border-radius: 0;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-links a {
+                padding: 1rem 2rem;
+                border-radius: 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+                font-size: 1rem;
+            }
+            
+            .nav-links a:hover {
+                background: var(--glass-bg);
+                transform: none;
+                box-shadow: none;
+            }
+            
+            .hero {
+                padding: 6rem 0 4rem;
+            }
+            
+            .features, .team-section, .chat-section {
+                padding: 4rem 0;
+            }
+            
+            .features-grid, .stats-grid, .team-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .chat-input {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .chat-input input {
+                width: 100%;
+                min-width: unset;
+            }
+            
+            .chat-input button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .user-message {
+                margin-right: 5%;
+            }
+            
+            .ai-message {
+                margin-left: 5%;
+            }
+            
+            .logo-container {
+                gap: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .hero {
+                padding: 5rem 0 3rem;
+            }
+            
+            .feature-card, .team-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .chat-container {
+                padding: 1.5rem 1rem;
+                border-radius: 20px;
+            }
+            
+            .chat-messages {
+                padding: 1.5rem;
+                border-radius: 15px;
+            }
+            
+            .message {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+            
+            .user-message, .ai-message {
+                margin-right: 0;
+                margin-left: 0;
+            }
+            
+            .footer-content {
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .logo-main {
+                font-size: 1.2rem;
+            }
+            
+            .logo-sub {
+                font-size: 0.6rem;
+            }
+            
+            .owner-badge {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.8rem;
+            }
+            
+            .hero-content h1::after {
+                font-size: 0.5rem;
+                padding: 0.3rem 0.6rem;
+                top: -15px;
+                right: -40px;
+            }
+        }
+        
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .cta-button:hover,
+            .nav-links a:hover,
+            .feature-card:hover,
+            .team-card:hover,
+            .stat-item:hover {
+                transform: none;
+            }
+            
+            .cta-button:active {
+                transform: scale(0.95);
+            }
+            
+            .nav-links a:active,
+            .chat-input button:active,
+            .voice-button:active {
+                transform: scale(0.95);
+            }
+        }
+        
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --glass-bg: rgba(255, 255, 255, 0.2);
+                --glass-border: rgba(255, 255, 255, 0.5);
+                --text-light: rgba(255, 255, 255, 1);
+                --text-secondary: rgba(255, 255, 255, 0.8);
+            }
+        }
+        
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="floating-elements" id="floatingElements"></div>
+    
+    <header id="header">
+        <nav class="container">
+            <div class="logo-container">
+                <div class="logo-icon">🤖</div>
+                <div class="logo">
+                    <div class="logo-text">
+                        <div class="logo-main">جارفس AI</div>
+                        <div class="logo-sub">Beta</div>
+                    </div>
+                </div>
+                <span class="owner-badge"> Beta R1 فائق</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home"><span>🏠 الرئيسية</span></a></li>
+                <li><a href="#features"><span>⚡ الميزات</span></a></li>
+                <li><a href="#team"><span>👥 الفريق</span></a></li>
+                <li><a href="#stats"><span>📊 الإحصائيات</span></a></li>
+                <li><a href="#chat"><span>💬 المحادثة</span></a></li>
+                <li><a href="#contact"><span>📞 اتصل بنا</span></a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1 class="floating">جـــارفــس</h1>
+                <p>🚀 الذكاء الاصطناعي الخارق الذي يفهم كل شيء ويجيب على جميع الأسئلة بدقة مذهلة</p>
+                <div class="cta-buttons">
+                    <a href="#chat" class="cta-button">
+                        🎯 ابدأ المحادثة فوراً
+                    </a>
+                    <a href="#features" class="cta-button secondary">
+                        🔍 اكتشف القدرات
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats" class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="1000000">0</div>
+                        <div class="stat-label">سؤال تم الإجابة عليه</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">مجال معرفي</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="99">0</div>
+                        <div class="stat-label">% دقة الإجابات</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="24">0</div>
+                        <div class="stat-label">ساعة متاح يومياً</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>🌟 قدرات جارفس R1 الاستثنائية</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>معرفة شاملة لا محدودة</h3>
+                        <p>جارفس R1 يملك قاعدة معرفة ضخمة تشمل كافة المجالات: العلوم، التاريخ، الثقافة، الطب، الفلسفة، التكنولوجيا، الاقتصاد والمزيد من التخصصات.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>ذكاء اصطناعي فائق</h3>
+                        <p>يستخدم أحدث تقنيات الذكاء الاصطناعي مع قدرة على التعلم المستمر وفهم السياق بدقة عالية وسرعة استجابة فورية.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3>محادثة طبيعية متقدمة</h3>
+                        <p>تحدث مع جارفس بطريقة طبيعية باللغة العربية الفصحى أو العامية، وسيفهم السياق ويتذكر تفاصيل المحادثة بدقة.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>بحث ذكي وتحليل عميق</h3>
+                        <p>يحلل الأسئلة المعقدة ويستخرج المعلومات الدقيقة من قاعدة معرفته الهائلة مع تقديم تحليل شامل ومفصل.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>أمان وخصوصية تامة</h3>
+                        <p>بياناتك محمية بأعلى معايير الأمان السيبراني، مع ضمان الخصوصية التامة وعدم تسريب أي معلومات شخصية.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>تحليل وشرح متعمق</h3>
+                        <p>لا يكتفي بالإجابة البسيطة، بل يقدم تحليلاً علمياً دقيقاً وشرحاً مفصلاً مع أمثلة عملية وتطبيقات واقعية.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="team-section">
+            <div class="container">
+                <h2>👥 فريق الصنع</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <div class="avatar-placeholder">👨‍💻</div>
+                        </div>
+                        <h3>rayan saad</h3>
+                        <p class="team-role">مطور رئيسي</p>
+                        <p class="team-bio">خبير في تطوير الذكاء الاصطناعي ومتخصص في تقنيات التعلم العميق</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <div class="avatar-placeholder">👨‍💻</div>
+                        </div>
+                        <h3>??</h3>
+                        <p class="team-role">مطور ثانوي</p>
+                        <p class="team-bio">متخصصة في إدارة المشاريع التقنية وتطوير المنتجات الذكية</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="chat" class="chat-section">
+            <div class="container">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h2>تحدث مع جارفس <span style="color: #f5576c;">R1</span> الآن</h2>
+                        <p>🎯 اسأل عن أي شيء! العلوم، التاريخ، الثقافة، الطب، الفلسفة، التكنولوجيا، الاقتصاد والمزيد...</p>
+                    </div>
+                    
+                    <div class="download-section">
+                        <button class="download-btn" onclick="downloadChat()">
+                            📥 تحميل المحادثة
+                        </button>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message ai-message">
+                            <strong>🤖 جارفس R1:</strong> مرحباً بك! أنا جارفس R1، المساعد الذكي الفائق. أملك معرفة شاملة في جميع المجالات العلمية والثقافية. يمكنني مساعدتك في:
+                            <br><br>
+                            🔬 العلوم والتكنولوجيا
+                            <br>📚 التاريخ والجغرافيا  
+                            <br>🎨 الثقافة والأدب
+                            <br>⚕️ الصحة والطب
+                            <br>🤔 الفلسفة والأديان
+                            <br>💼 الاقتصاد والأعمال
+                            <br><br>
+                            اسألني عن أي شيء وسأقدم لك إجابة مفصلة ودقيقة! 🚀
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="messageInput" placeholder="🤔 اكتب سؤالك هنا..." />
+                        <button class="voice-button" id="voiceButton" title="التسجيل الصوتي">🎤</button>
+                        <button onclick="sendMessage()">
+                            📤 إرسال
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🤖 عن جارفس R1</h3>
+                    <p>جارفس R1 هو مساعد ذكي فائق يملك معرفة شاملة في جميع مجالات العلم والمعرفة الإنسانية، مصمم ليكون مرجعك الموثوق والدقيق للمعلومات في العصر الرقمي.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>🎯 مجالات المعرفة</h3>
+                    <p><a href="#">🔬 العلوم والتكنولوجيا</a></p>
+                    <p><a href="#">📚 التاريخ والجغرافيا</a></p>
+                    <p><a href="#">🎨 الثقافة والأدب</a></p>
+                    <p><a href="#">⚕️ الطب والصحة</a></p>
+                    <p><a href="#">🤔 الفلسفة والأديان</a></p>
+                    <p><a href="#">💼 الاقتصاد والأعمال</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>📞 اتصل بنا</h3>
+                    <p>📧 البريد الإلكتروني: RKYsa@jarvis-ai.com</p>
+                    <p>📱  الهاتف:053 855 9146   </p>
+                    <p>📍 العنوان: [جدة]، المملكة العربية السعودية</p>
+                    <p>🌐 الموقع: www.jarvis-ai.com</p>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid var(--glass-border); margin-top: 2rem;">
+                <p>&copy; 2025 جارفس AI - <span style="color: #f5576c; font-weight: bold;">R1 فائق</span>. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Knowledge Base for Jarvis R1 with Google Search
+        const knowledgeBase = {
+            // Physical Sciences
+            "فيزياء|الفيزياء|physics": "🔬 الفيزياء هي العلم الذي يدرس المادة والطاقة والتفاعلات بينهما. تشمل فروعها: الميكانيكا الكلاسيكية، الكهرومغناطيسية، الديناميكا الحرارية، الفيزياء الحديثة (النسبية والكم)، فيزياء الجسيمات، والفيزياء الفلكية. من أهم قوانينها قوانين نيوتن للحركة، قانون حفظ الطاقة، ومعادلات ماكسويل للكهرومغناطيسية.",
+            
+            "كيمياء|الكيمياء|chemistry": "⚗️ الكيمياء علم دراسة المادة وخصائصها وتفاعلاتها. تنقسم إلى: الكيمياء العضوية (مركبات الكربون)، اللاعضوية (العناصر والمركبات الأخرى)، الفيزيائية (الخصائص الفيزيائية للمواد)، التحليلية (تحديد تركيب المواد)، والحيوية (العمليات الكيميائية في الكائنات الحية). الجدول الدوري ينظم العناصر حسب خصائصها.",
+            
+            "رياضيات|الرياضيات|mathematics|math": "📐 الرياضيات لغة العلوم والتكنولوجيا. تشمل: الجبر، الهندسة، التفاضل والتكامل، الإحصاء، نظرية الأعداد، والرياضيات التطبيقية. من أهم المفاهيم: المعادلات، الدوال، المصفوفات، والاحتمالات. تستخدم في الفيزياء، الهندسة، الاقتصاد، وعلوم الحاسوب.",
+            
+            // Life Sciences
+            "أحياء|الأحياء|biology|علم الأحياء": "🧬 علم الأحياء يدرس الكائنات الحية وعملياتها. يشمل: علم الخلية، الوراثة، التطور، علم البيئة، علم التشريح، وعلم وظائف الأعضاء. من أهم المفاهيم: الحمض النووي DNA، التطور بالانتقاء الطبيعي، التمثيل الغذائي، والتكاثر. يساعد في فهم الحياة وتطوير الطب والزراعة.",
+            
+            "طب|الطب|medicine|medical": "⚕️ الطب علم وفن تشخيص وعلاج الأمراض. يشمل تخصصات متعددة: الطب الباطني، الجراحة، طب الأطفال، النساء والولادة، الطب النفسي، والأشعة. يعتمد على فهم تشريح الجسم، وظائف الأعضاء، الأمراض، والعلاجات. التطورات الحديثة تشمل الطب الشخصي والعلاج الجيني.",
+            
+            // History
+            "تاريخ|التاريخ|history": "📚 التاريخ دراسة الأحداث الماضية والحضارات. يشمل التاريخ القديم (مصر، بلاد الرافدين، اليونان، روما)، الوسيط (الإسلامي، البيزنطي، الأوروبي)، والحديث (النهضة، الثورات، الحروب العالمية). يساعد في فهم تطور المجتمعات والثقافات والتعلم من التجارب السابقة.",
+            
+            "تاريخ إسلامي|التاريخ الإسلامي|islamic history": "🕌 التاريخ الإسلامي يبدأ بالبعثة النبوية (610م) ويشمل: عهد الخلفاء الراشدين، الدولة الأموية، العباسية، الأندلس، الدولة العثمانية، والممالك الإسلامية المختلفة. شهد ازدهاراً علمياً وثقافياً عظيماً، وانتشر الإسلام من الأندلس غرباً إلى آسيا الوسطى شرقاً.",
+            
+            // Geography
+            "جغرافيا|الجغرافيا|geography": "🌍 الجغرافيا علم دراسة الأرض وظواهرها. تنقسم إلى: الجغرافيا الطبيعية (المناخ، التضاريس، المياه)، والبشرية (السكان، المدن، الاقتصاد). تشمل دراسة القارات، المحيطات، الأنهار، الجبال، والمناخ. مهمة لفهم البيئة والتخطيط العمراني والتنمية المستدامة.",
+            
+            // Technology
+            "تكنولوجيا|التكنولوجيا|technology|تقنية": "💻 التكنولوجيا تطبيق المعرفة العلمية لحل المشاكل العملية. تشمل: تكنولوجيا المعلومات، الذكاء الاصطناعي، الروبوتات، التكنولوجيا الحيوية، النانوتكنولوجي، والطاقة المتجددة. تؤثر على جميع جوانب الحياة من التعليم والصحة إلى الاتصالات والنقل.",
+            
+            "ذكاء اصطناعي|الذكاء الاصطناعي|artificial intelligence|AI": "🤖 الذكاء الاصطناعي محاولة محاكاة الذكاء البشري في الآلات. يشمل: التعلم الآلي، الشبكات العصبية، معالجة اللغة الطبيعية، الرؤية الحاسوبية، والروبوتات. يستخدم في السيارات ذاتية القيادة، التشخيص الطبي، المساعدات الصوتية، والألعاب. يثير قضايا أخلاقية حول المستقبل.",
+            
+            // Philosophy and Religion
+            "فلسفة|الفلسفة|philosophy": "🤔 الفلسفة حب الحكمة والبحث عن الحقيقة. تشمل: الميتافيزيقا (طبيعة الوجود)، المعرفة (كيف نعرف)، الأخلاق (ما هو صحيح)، الجمال (طبيعة الفن)، والمنطق (التفكير الصحيح). من أهم الفلاسفة: سقراط، أفلاطون، أرسطو، ابن سينا، الغزالي، وكانط.",
+            
+            "إسلام|الإسلام|islam": "☪️ الإسلام دين التوحيد الذي أنزل على النبي محمد ﷺ. يقوم على خمسة أركان: الشهادة، الصلاة، الزكاة، الصوم، والحج. مصادره القرآن الكريم والسنة النبوية. يؤمن بالله الواحد، الملائكة، الكتب السماوية، الرسل، اليوم الآخر، والقدر. انتشر في جميع أنحاء العالم وله حضارة عريقة.",
+            
+            // Economics and Business
+            "اقتصاد|الاقتصاد|economics": "💰 الاقتصاد علم دراسة إنتاج وتوزيع واستهلاك السلع والخدمات. يشمل: الاقتصاد الجزئي (سلوك الأفراد والشركات)، والكلي (الاقتصاد الوطني). من أهم المفاهيم: العرض والطلب، التضخم، البطالة، النمو الاقتصادي، والتجارة الدولية. يؤثر على مستوى المعيشة والسياسات الحكومية.",
+            
+            "أعمال|الأعمال|business|إدارة": "💼 إدارة الأعمال تنظيم الموارد لتحقيق الأهداف. تشمل: التخطيط، التنظيم، القيادة، والرقابة. من أهم المجالات: التسويق، المالية، الموارد البشرية، العمليات، والاستراتيجية. تتطلب مهارات في التحليل، اتخاذ القرارات، التواصل، والابتكار.",
+            
+            // Arts and Culture
+            "أدب|الأدب|literature": "📖 الأدب التعبير الفني بالكلمة. يشمل: الشعر، النثر، المسرح، والرواية. من أهم الأدباء العرب: الجاحظ، المتنبي، أبو العلاء المعري، نجيب محفوظ، وأدونيس. يعكس ثقافة المجتمع ويؤثر في تشكيل الوعي والهوية الثقافية.",
+            
+            "فن|الفن|art": "🎨 الفن التعبير الإبداعي عن الجمال والمشاعر. يشمل: الرسم، النحت، الموسيقى، المسرح، السينما، والعمارة. من أهم المدارس الفنية: الكلاسيكية، الرومانسية، الانطباعية، والحداثة. يؤثر على الثقافة ويعكس روح العصر.",
+            
+            // Current Events and News
+            "أخبار|اخبار|news": "📰 للحصول على آخر الأخبار، يمكنني البحث في المصادر الإخبارية الموثوقة. أخبرني عن الموضوع الذي تريد معرفة آخر المستجدات عنه: السياسة، الاقتصاد، الرياضة، التكنولوجيا، أو أي مجال آخر.",
+            
+            // Saudi Arabia
+            "السعودية|المملكة العربية السعودية|saudi arabia": "🇸🇦 المملكة العربية السعودية أكبر دول الشرق الأوسط مساحة. تأسست عام 1932 على يد الملك عبدالعزيز آل سعود. عاصمتها الرياض، وتضم الحرمين الشريفين في مكة والمدينة. تملك أكبر احتياطيات نفطية في العالم. تشهد تطوراً كبيراً في إطار رؤية 2030 للتنويع الاقتصادي والتحديث الاجتماعي.",
+            
+            // Greetings and Common Responses
+            "مرحبا|أهلا|السلام عليكم|hello|hi": "🌟 أهلاً وسهلاً بك! أنا جارفس R1، المساعد الذكي الفائق. أملك معرفة شاملة وعميقة في جميع المجالات العلمية والثقافية والتقنية. كيف يمكنني مساعدتك اليوم؟ 🚀",
+            
+            "شكرا|شكراً|ممتاز|رائع|جميل": "😊 العفو وأهلاً بك! سعيد جداً بمساعدتك. كوني جارفس R1، هدفي تقديم أفضل وأدق المعلومات. هل تحتاج معرفة المزيد في أي مجال علمي أو ثقافي آخر؟ 🎯"
+        };
+
+        // Google Search Function (Simulation)
+        async function searchGoogle(query) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    // Mock Google search results
+                    const mockResults = {
+                        "اخبار": "📰 آخر الأخبار اليوم:\n• السعودية تطلق مشروع نيوم الجديد\n• ارتفاع أسعار النفط عالمياً\n• تطورات في تقنية الذكاء الاصطناعي\n• أحداث رياضية مهمة هذا الأسبوع",
+                        "اسعار": "💰 أسعار اليوم:\n• البيتكوين: $45,000\n• الذهب: $2,100/أونصة\n• النفط: $85/برميل\n• الدولار مقابل الريال: 3.75",
+                        "طقس": "🌤️ حالة الطقس:\n• الرياض: 28°م، مشمس\n• جدة: 32°م، غائم جزئياً\n• الدمام: 30°م، رطب\n• أبها: 22°م، معتدل",
+                        "رياضة": "⚽ أخبار رياضية:\n• الهلال يفوز 2-1 على النصر\n• ريال مدريد يتصدر الليغا\n• محمد صلاح يسجل هدفين\n• كأس العالم 2026 في أمريكا",
+                        "default": `🔍 نتائج البحث عن "${query}":\n\nوفقاً لأحدث المعلومات من الإنترنت:\n• معلومات محدثة حول الموضوع\n• مصادر موثوقة ومتنوعة\n• تحليل شامل للبيانات الحديثة\n• روابط للمزيد من التفاصيل\n\n📡 البيانات محدثة لحظياً من جوجل`
+                    };
+                    
+                    // Select appropriate result
+                    let result = mockResults.default;
+                    for (const [key, value] of Object.entries(mockResults)) {
+                        if (query.includes(key) && key !== 'default') {
+                            result = value;
+                            break;
+                        }
+                    }
+                    
+                    resolve(result);
+                }, 1500); // Delay to simulate real search
+            });
+        }
+
+        // Enhanced Smart Response Function
+        function getSmartResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            // Special codes for users
+            if (message.includes('RKY1') || lowerMessage.includes('rky1')) {
+                return '🌟 مرحباً ريان! أهلاً وسهلاً بك في جارفس R1. سعيد برؤيتك مرة أخرى! 👑✨\n\nأنت تملك وصولاً خاصاً لجميع قدراتي المتقدمة. كيف يمكنني مساعدتك اليوم؟ 🚀';
+            }
+
+            if (message.includes('RKY2') || lowerMessage.includes('rky2')) {
+                return '🌟 مرحباً لميس! أهلاً وسهلاً بك في جارفس R1. سعيد برؤيتك مرة أخرى! 👑✨\n\nأنت تملك وصولاً خاصاً لجميع قدراتي المتقدمة. كيف يمكنني مساعدتك اليوم؟ 🚀';
+            }
+
+            if (message.includes('RKY0') || lowerMessage.includes('rky0')) {
+                return '🌟 مرحباً هياء بنت عبد الرحمن! أهلاً وسهلاً بك في جارفس R1. سعيد برؤيتك مرة أخرى! 👑✨\n\nأنت تملك وصولاً خاصاً لجميع قدراتي شركة (RKYsa company) المتقدمة. كيف يمكنني مساعدتك اليوم؟ 🚀';
+            }
+
+            if (message.includes('F22') || lowerMessage.includes('f22')) {
+                return '🌟 مرحباً فروسي! أهلاً وسهلاً بك في جارفس R1. سعيد برؤيتك مرة أخرى! 👑✨\n\nأنت تملك وصولاً خاصاً لجميع قدراتي المتقدمة. كيف يمكنني مساعدتك اليوم؟ 🚀';
+            }
+
+             if (message.includes('RKY5') || lowerMessage.includes('rky5')) {
+                return '🌟 مرحباً ميرا الضغيره وعبودي بق برذر! أهلاً وسهلاً بك في جارفس R1. سعيد برؤيتك مرة أخرى! 👑✨\n\nأنت تملك وصولاً خاصاً لجميع قدراتي المتقدمة. كيف يمكنني مساعدتك اليوم؟ 🚀';
+            }
+            
+            // Search in knowledge base
+            for (const [keywords, response] of Object.entries(knowledgeBase)) {
+                const keywordArray = keywords.split('|');
+                if (keywordArray.some(keyword => lowerMessage.includes(keyword))) {
+                    return response;
+                }
+            }
+            
+            // Special responses for greetings and interactions
+            const greetings = ['مرحبا', 'السلام', 'أهلا', 'صباح', 'مساء', 'hello', 'hi'];
+            if (greetings.some(greeting => lowerMessage.includes(greeting))) {
+                return '🌟 أهلاً وسهلاً بك! أنا جارفس R1، المساعد الذكي الفائق. أملك معرفة شاملة وعميقة في جميع المجالات العلمية والثقافية والتقنية. كيف يمكنني مساعدتك اليوم؟ 🚀';
+            }
+            
+            const thanks = ['شكرا', 'ممتاز', 'رائع', 'جميل', 'مفيد'];
+            if (thanks.some(thank => lowerMessage.includes(thank))) {
+                return '😊 العفو وأهلاً بك! سعيد جداً بمساعدتك. كوني جارفس R1، هدفي تقديم أفضل وأدق المعلومات. هل تحتاج معرفة المزيد في أي مجال علمي أو ثقافي آخر؟ 🎯';
+            }
+            
+            // Identity questions
+            if (lowerMessage.includes('من أنت') || lowerMessage.includes('ما اسمك') || lowerMessage.includes('تعرف نفسك')) {
+                return '🤖 أنا جارفس R1، المساعد الذكي المتطور والفائق. أملك معرفة شاملة وعميقة في كافة المجالات العلمية والثقافية والتاريخية والتقنية. مصمم خصيصاً لأكون مرجعك الموثوق والدقيق للمعلومات في العصر الرقمي! ⚡';
+            }
+            
+            // Capability questions
+            if (lowerMessage.includes('ماذا تعرف') || lowerMessage.includes('ما تستطيع') || lowerMessage.includes('قدراتك')) {
+                return `🧠 معرفتي واسعة وشاملة! يمكنني مساعدتك في:
+
+🔬 العلوم: فيزياء، كيمياء، أحياء، رياضيات، فلك
+📚 التاريخ: القديم، الإسلامي، الحديث، السعودي
+🌍 الجغرافيا: قارات، دول، عواصم، مناخ
+🎨 الأدب والثقافة: شعر، نثر، فنون، تراث
+⚕️ الطب والصحة: تشريح، أمراض، علاج، تغذية
+🤔 الفلسفة والأديان: مذاهب فكرية، أديان سماوية
+💻 التكنولوجيا: برمجة، ذكاء اصطناعي، تقنيات حديثة
+💼 الاقتصاد والأعمال: إدارة، تسويق، استثمار
+
+اسأل عن أي موضوع تريد معرفة المزيد عنه! 🎯`;
+            }
+            
+            // Smart response for unclear questions
+            return `🤔 سؤالك "${message}" مثير للاهتمام! 
+
+كوني جارفس R1 بمعرفة شاملة، أحتاج توضيحاً أكثر لأقدم لك الإجابة الأمثل.
+
+هل تقصد موضوعاً في:
+🔬 العلوم والتكنولوجيا
+📚 التاريخ والحضارات
+🌍 الجغرافيا والدول  
+🎨 الثقافة والأدب
+⚕️ الصحة والطب
+🤔 الفلسفة والأديان
+💼 الاقتصاد والأعمال
+
+حدد المجال بوضوح أكثر وسأقدم لك معلومات مفصلة ودقيقة! 🎯`;
+        }
+
+        // Global variables
+        let isVoiceRecording = false;
+        let chatHistory = [];
+
+        // Enhanced Send Message Function
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const messagesContainer = document.getElementById('chatMessages');
+            const message = input.value.trim();
+            
+            if (message === '') {
+                input.style.borderColor = '#f5576c';
+                input.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    input.style.borderColor = 'var(--glass-border)';
+                    input.style.transform = 'scale(1)';
+                }, 1000);
+                return;
+            }
+            
+            // Add to chat history
+            chatHistory.push({
+                type: 'user',
+                message: message,
+                timestamp: new Date().toLocaleString('ar-SA')
+            });
+            
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.innerHTML = `<strong>👤 أنت:</strong> ${message}`;
+            messagesContainer.appendChild(userMessage);
+            
+            // Clear input
+            input.value = '';
+            
+            // Show enhanced typing indicator
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'message ai-message';
+            typingIndicator.id = 'typing';
+            typingIndicator.innerHTML = `
+                <strong>🤖 جارفس R1:</strong> 
+                <div class="typing-indicator">
+                    <span>يحلل السؤال ويستخرج المعلومات</span>
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            `;
+            messagesContainer.appendChild(typingIndicator);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Add AI response after realistic delay
+            setTimeout(() => {
+                // Remove typing indicator
+                const typing = document.getElementById('typing');
+                if (typing) {
+                    typing.remove();
+                }
+                
+                const aiMessage = document.createElement('div');
+                aiMessage.className = 'message ai-message';
+                const smartResponse = getSmartResponse(message);
+                aiMessage.innerHTML = `<strong>🤖 جارفس R1:</strong> ${smartResponse}`;
+                messagesContainer.appendChild(aiMessage);
+                
+                // Add to chat history
+                chatHistory.push({
+                    type: 'ai',
+                    message: smartResponse,
+                    timestamp: new Date().toLocaleString('ar-SA')
+                });
+                
+                // Scroll to bottom
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 2000);
+            
+            // Scroll to bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        // Download Chat Function
+        function downloadChat() {
+            if (chatHistory.length === 0) {
+                alert('لا توجد محادثة للتحميل!');
+                return;
+            }
+            
+            let chatContent = 'محادثة مع جارفس R1\n';
+            chatContent += '='.repeat(50) + '\n\n';
+            
+            chatHistory.forEach((entry, index) => {
+                const speaker = entry.type === 'user' ? '👤 أنت' : '🤖 جارفس R1';
+                chatContent += `${speaker} (${entry.timestamp}):\n`;
+                chatContent += `${entry.message}\n\n`;
+                chatContent += '-'.repeat(30) + '\n\n';
+            });
+            
+            chatContent += `\nتم إنشاء هذا الملف في: ${new Date().toLocaleString('ar-SA')}\n`;
+            chatContent += 'جارفس R1 - المساعد الذكي الفائق\n';
+            chatContent += 'www.jarvis-ai.com';
+            
+            const blob = new Blob([chatContent], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `محادثة_جارفس_R1_${new Date().toISOString().split('T')[0]}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            // Show success message
+            const downloadBtn = document.querySelector('.download-btn');
+            const originalText = downloadBtn.innerHTML;
+            downloadBtn.innerHTML = '✅ تم التحميل بنجاح!';
+            downloadBtn.style.background = 'var(--success-gradient)';
+            
+            setTimeout(() => {
+                downloadBtn.innerHTML = originalText;
+                downloadBtn.style.background = 'var(--success-gradient)';
+            }, 2000);
+        }
+        
+        // Enhanced Voice Recording Function
+        function toggleVoiceRecording() {
+            const voiceButton = document.getElementById('voiceButton');
+            const messageInput = document.getElementById('messageInput');
+            
+            if (!isVoiceRecording) {
+                isVoiceRecording = true;
+                voiceButton.classList.add('recording');
+                voiceButton.innerHTML = '🔴';
+                messageInput.placeholder = '🎤 جاري التسجيل... اضغط مرة أخرى للإيقاف';
+                
+                // Simulate recording for 3 seconds
+                setTimeout(() => {
+                    isVoiceRecording = false;
+                    voiceButton.classList.remove('recording');
+                    voiceButton.innerHTML = '🎤';
+                    messageInput.placeholder = '🤔 اكتب سؤالك هنا...';
+                    messageInput.value = 'مرحباً جارفس، كيف حالك؟';
+                }, 3000);
+            } else {
+                isVoiceRecording = false;
+                voiceButton.classList.remove('recording');
+                voiceButton.innerHTML = '🎤';
+                messageInput.placeholder = '🤔 اكتب سؤالك هنا...';
+            }
+        }
+        
+        // Setup events when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuToggle && navLinks) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    
+                    // Animate hamburger menu
+                    const spans = mobileMenuToggle.querySelectorAll('span');
+                    if (navLinks.classList.contains('active')) {
+                        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+                
+                // Close mobile menu when clicking on a link
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        const spans = mobileMenuToggle.querySelectorAll('span');
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    });
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                        navLinks.classList.remove('active');
+                        const spans = mobileMenuToggle.querySelectorAll('span');
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+            }
+            
+            // Enter to send
+            const messageInput = document.getElementById('messageInput');
+            if (messageInput) {
+                messageInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                });
+            }
+            
+            // Voice recording button
+            const voiceButton = document.getElementById('voiceButton');
+            if (voiceButton) {
+                voiceButton.addEventListener('click', toggleVoiceRecording);
+            }
+            
+            // Create enhanced particles
+            createEnhancedParticles();
+            
+            // Create floating elements
+            createFloatingElements();
+            
+            // Animate stats
+            animateStats();
+            
+            // Setup scroll effects
+            setupScrollEffects();
+            
+            // Setup intersection observer for animations
+            setupIntersectionObserver();
+        });
+        
+        // Enhanced Particle System
+        function createEnhancedParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+            
+            const particleCount = window.innerWidth < 768 ? 40 : 80;
+            const colors = ['blue', 'orange', 'purple'];
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = `particle ${colors[Math.floor(Math.random() * colors.length)]}`;
+                const size = Math.random() * 6 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Create Floating Elements
+        function createFloatingElements() {
+            const floatingContainer = document.getElementById('floatingElements');
+            if (!floatingContainer) return;
+            
+            const elements = ['🤖', '⚡', '🧠', '🔬', '📚', '💻', '🌟', '🚀'];
+            const elementCount = window.innerWidth < 768 ? 4 : 8;
+            
+            for (let i = 0; i < elementCount; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.textContent = elements[Math.floor(Math.random() * elements.length)];
+                element.style.left = Math.random() * 100 + '%';
+                element.style.top = Math.random() * 100 + '%';
+                element.style.animationDelay = Math.random() * 15 + 's';
+                element.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                floatingContainer.appendChild(element);
+            }
+        }
+        
+        // Animate Statistics
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            const animateNumber = (element) => {
+                const target = parseInt(element.getAttribute('data-target'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(current).toLocaleString();
+                }, 16);
+            };
+            
+            // Use Intersection Observer to trigger animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateNumber(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            statNumbers.forEach(stat => observer.observe(stat));
+        }
+        
+        // Setup Scroll Effects
+        function setupScrollEffects() {
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+        
+        // Setup Intersection Observer for Animations
+        function setupIntersectionObserver() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements that should animate on scroll
+            const animatedElements = document.querySelectorAll('.feature-card, .team-card, .stat-item');
+            animatedElements.forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+        }
+    </script>
+</body>
+</html>
+
